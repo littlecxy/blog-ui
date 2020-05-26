@@ -1,33 +1,25 @@
 <template>
   <div>
-    <img alt="clannad" src="../images/clannad.png">
+    <!-- <img alt="clannad" src="../images/clannad.png"> -->
     <el-row>
-      <div >
-        <el-col :span="1">
-          <navigation v-slot:describe>
-            <span >主页</span> 
-          </navigation>
-        </el-col>
-        <el-col :span="1">
-          <navigation v-slot:icon>
-            <i class="el-icon-delete"></i>
-          </navigation>
-        </el-col>
-      </div>
+      <navigation></navigation>
+      <!-- <music></music> -->
     </el-row>
   </div>
 </template>
 
 <script>
-import navigation from '@/components/navigation'
+import navigation from '@/components/navigation';
+import music from '@/components/music'
 export default {
   name: 'headPart',
   components: {
-    navigation
+    navigation,
+    music
   },
   data() {
     return {
-      describe: ['主页']
+      
     }
   },
 }
