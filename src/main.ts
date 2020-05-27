@@ -11,9 +11,6 @@ Vue.use(vueAplayer);
 Vue.config.productionTip = false
 
 new Vue({
-  data() {
-    return {value:''}
-  },
   router,
   store,
   render: h => h(App)

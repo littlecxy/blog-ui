@@ -1,21 +1,22 @@
 <template>
   <div>
-    <!-- <img alt="clannad" src="../images/clannad.png"> -->
-    <el-row>
-      <navigation></navigation>
+    <navigation></navigation>
+    <img alt="clannad" src="../images/clannad.png">
       <!-- <music></music> -->
-    </el-row>
+      <introduce></introduce>
   </div>
 </template>
 
 <script>
 import navigation from '@/components/navigation';
-import music from '@/components/music'
+import music from '@/components/music';
+import introduce from '@/components/introduce'
 export default {
   name: 'headPart',
   components: {
     navigation,
-    music
+    music,
+    introduce
   },
   data() {
     return {
@@ -28,6 +29,7 @@ export default {
 <style lang="scss" scoped>
   img {
     max-width: $max-width;
+    height: 1100px;
   }
   .el-row {
     margin-bottom: 20px;

@@ -2,19 +2,22 @@
   <div class="home">
     <headPart></headPart>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <articleBody></articleBody>
+    <!-- <markdown></markdown> -->
+    <!-- <article-content></article-content> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import headPart from '@/components/headPart.vue'
-import articleBody from '@/components/article.vue'
+import headPart from '@/components/headPart.vue';
+import markdown from '@/components/markdown.vue';
+import articleContent from '@/components/articleContent.vue'
 export default {
   name: 'Home',
   components: {
     headPart,
-    articleBody
+    markdown,
+    articleContent
   }
 }
 </script>

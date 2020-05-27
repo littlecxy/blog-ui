@@ -1,10 +1,7 @@
 <template>
     <div>
       <el-row>
-        <el-col :span="6">
-          <button id="save" @click="save">保存</button>
-        </el-col>
-        <el-col v-if="show" :span="12">
+        <el-col v-if="show" :span="12" :offset="6">
           <div class="content">
             <mavonEditor ref="editor" :fontSize="fontSize" :placeholder="placeholder" v-model="doc"> </mavonEditor>
           </div>
@@ -28,7 +25,7 @@ export default {
     },
     methods: {
       save() {
-        this.show = false
+        this.show ? this.show = false : this.show = true
       }
     }
 }
