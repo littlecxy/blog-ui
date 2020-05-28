@@ -18,7 +18,7 @@ export default {
 <style lang="scss" scoped>
   .introduce {
     position: absolute;
-    top: 100px;
+    top: 300px;
     left: 44%;
       .portrait {
           img {

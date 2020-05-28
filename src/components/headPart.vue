@@ -3,6 +3,18 @@
     <navigation></navigation>
     <img alt="clannad" src="../images/clannad.png">
       <!-- <music></music> -->
+      <h1 class="animate__animated animate__shakeY">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <text x="0"  y="40"
+            style="font-family: Arial;
+                   font-size  : 31;
+                   stroke     : #000000;
+                   stroke-width: 2;
+                   fill       : #FF6347;
+                  "
+            >Welcome to my blog</text>
+        </svg>
+      </h1>
       <introduce></introduce>
   </div>
 </template>
@@ -39,5 +51,10 @@ export default {
   }
   .el-col {
     border-radius: 4px;
+  }
+  h1 {
+    position: absolute;
+    top: 200px;
+    left: 41%;
   }
 </style>
