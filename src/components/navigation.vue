@@ -3,7 +3,7 @@
     <el-row>
       <el-col :offset="offset" :lg="14" :xl="10">
         <el-menu :default-active="activeIndex" class="el-menu-demo" background-color="#B5AEA7" mode="horizontal" @select="handleSelect">
-          <el-menu-item index="1">
+          <el-menu-item index="1" @click="toHome">
             <img src="../images/home.png" alt="咦!我图呢???">
             <span>首页</span>
           </el-menu-item>
@@ -13,11 +13,11 @@
               <el-menu-item index="2-2">html</el-menu-item>
               <el-menu-item index="2-3">css</el-menu-item>
           </el-submenu>
-          <el-menu-item index="3">
+          <el-menu-item @click="toHome" index="3">
             <img src="../images/light.png" alt="咦!我图呢???">
             <span slot="title">个人感悟</span>
           </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item @click="toHome" index="4">
             <img src="../images/life.png" alt="咦!我图呢???">
             <span slot="title">生活分享</span>
           </el-menu-item>
@@ -25,7 +25,7 @@
             <img src="../images/comments.png" alt="咦!我图呢???">
             <span slot="title">欢迎留言</span>
           </el-menu-item>
-          <el-menu-item index="6">
+          <el-menu-item @click="about" index="6">
             <img src="../images/about.png" alt="咦!我图呢???">
             <span slot="title">关于我</span>
           </el-menu-item>
@@ -39,7 +39,7 @@ export default {
   name: 'navigation',
   data() {
       return {
-        offset: '7',
+        offset: 7,
         activeIndex: '1',
         activeIndex2: '1'
       };
@@ -47,10 +47,16 @@ export default {
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      about() {
+        this.$router.push('/about')
+      },
+      toHome() {
+        this.$router.push('/')
       }
     },
     mounted(){
-      document.body.clientWidth < 1680 ? this.offset = '5' : this.offset = '7'            
+      document.body.clientWidth < 1680 ? this.offset = 5 : this.offset = 7;            
     }
 
 }
