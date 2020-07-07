@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
+import Felling from '../views/Felling.vue'
+import Share from '../views/Share.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +17,16 @@ Vue.use(VueRouter)
     path: '/about',
     name: 'About',
     component: About
+  },
+  {
+    path: '/felling',
+    name: 'Felling',
+    component: Felling
+  },
+  {
+    path: '/share',
+    name: 'Share',
+    component: Share
   }
   // {
   //   path: '/about',

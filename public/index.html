@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>筆塑流年の博客</title>
+    <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
   </head>
   <style>
     html,body {
@@ -23,6 +24,30 @@
     <div id="app">
        
     </div>
+    <script>
+        L2Dwidget.init({
+              "model": {
+                  jsonPath: "https://unpkg.com/live2d-widget-model-koharu/assets/koharu.model.json",
+                  //live2d-widget-model-haruto  live2d-widget-model-hibiki
+                  "scale": 1
+              },
+              "display": {
+                  "position": "bottom",
+                  "width": 120,
+                  "height": 240,
+                  "hOffset": 0,
+                  "vOffset": -20
+              },
+              "mobile": {
+                  "show": true,
+                  "scale": 0.5
+              },
+              "react": {
+                  "opacityDefault": 0.7,
+                  "opacityOnHover": 0.2
+              }
+          });
+      </script>
   <script>
       // 爱心光标
     !function(e, t, a) {

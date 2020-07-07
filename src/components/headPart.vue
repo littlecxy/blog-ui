@@ -1,7 +1,7 @@
 <template>
   <div>
     <navigation></navigation>
-    <img alt="clannad" src="../images/clannad.png">
+    <img alt="clannad" src="../images/bgd.jpg">
       <!-- <music></music> -->
       <h1 class="animate__animated animate__shakeY">
         <svg xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +10,7 @@
                    font-size  : 31;
                    stroke     : #000000;
                    stroke-width: 2;
-                   fill       : #FF6347;
+                   fill       : #9FAAEA;
                   "
             >Welcome to my blog</text>
         </svg>
@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
   img {
     max-width: $max-width;
-    height: 1100px;
+    height: 800px;
   }
   .el-row {
     margin-bottom: 20px;

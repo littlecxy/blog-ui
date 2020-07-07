@@ -41,7 +41,7 @@ export default {
     display: flex;
     flex-direction: column;
       .label {
-        width: 60px;
+        width: 54px;
         height: 30px;
         background-color: rgba(230,244,249,0.8);
         border-radius: 20px;
@@ -53,7 +53,7 @@ export default {
       }
   }
   img {
-    width: 260px;
+    width: 240px;
     height: 230px;
   }
 </style>

@@ -94,7 +94,7 @@ export default {
   .container {
     padding: 15px 20px;
     width: 39%;
-    margin-left: 29%;
+    margin-left: 28%;
     margin-top: 40px;
     background-color: #ffffff;
     p {
