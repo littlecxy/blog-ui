@@ -2,31 +2,31 @@
   <div>
     <article class="article">
       <div class="label">
-        <span class="year">05月</span>
-        <span class="month">07</span>
+        <span class="year">{{ article.year }}月</span>
+        <span class="month">{{ article.month }}</span>
       </div>
       <el-row>
-        <h1>2020  我做了什么</h1>
+        <h1>{{ article.title }}</h1>
       </el-row>
       <el-row>
         <el-col :span="5" :offset="4">
           <i class="el-icon-date"></i>
-          <span style="color:#00a7e0">2020年5月7日</span>
+          <span style="color:#00a7e0">{{ article.date }}</span>
         </el-col>
         <el-col :span="5">
           <i class="el-icon-tickets"></i>
-          <span>共计1300字</span>
+          <span>共计{{ article.totalNum }}字</span>
         </el-col>
         <el-col :span="5">
           <i class="el-icon-view"></i>
-          <span style="color:#ff3f1a">预计阅读10分钟</span>
+          <span style="color:#ff3f1a">预计阅读{{ article.readTime }}分钟</span>
         </el-col>
       </el-row>
       <div class="content">
-        2020年快过去一半了，我这半年都干了些什么...
+        {{ article.ContentAbstract }}
       </div>
       <div class="detail">
-        <el-button type="primary" size="small" icon="el-icon-s-unfold">阅读全文</el-button>
+        <el-button type="primary" size="small" @click="fullText" icon="el-icon-s-unfold">阅读全文</el-button>
       </div>
     </article>
   </div>
@@ -34,7 +34,43 @@
   
 <script>
 export default {
-  name: 'articleContent'
+  name: 'articleContent',
+  data(){
+    return {
+      article:{
+        id: '',
+        year: '',
+        month: '',
+        title: '',
+        date: '',
+        totalNum: '',
+        readTime: '',
+        ContentAbstract: '',
+      }
+    }
+  },
+  props: {
+    toChild:{
+      type: Object
+    }
+  },
+  created(){
+    this.article = this.toChild
+    this.article.readTime = parseInt(this.toChild.totalNum/100)
+  },
+  computed: {
+    // calculateTime(){
+    //   this.article.readTime = parseInt(this.article.totalNum/100)
+    // }
+  },
+  mounted(){
+    
+  },
+  methods: {
+    fullText: function(){
+      this.$router.push({name:'ArticleDetail',params: {content: this.article.content}})
+    }
+  }
 }
 
 </script>

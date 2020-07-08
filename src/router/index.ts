@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Felling from '../views/Felling.vue'
 import Share from '../views/Share.vue'
+import ArticleDetail from '../views/ArticleDetail.vue'
+import LearnNote from '../views/LearnNote.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +29,17 @@ Vue.use(VueRouter)
     path: '/share',
     name: 'Share',
     component: Share
-  }
+  },
+  {
+    path: '/ArticleDetail',
+    name: 'ArticleDetail',
+    component: ArticleDetail
+  },
+  {
+    path: '/LearnNote',
+    name: 'LearnNote',
+    component: LearnNote
+  },
   // {
   //   path: '/about',
   //   name: 'About',

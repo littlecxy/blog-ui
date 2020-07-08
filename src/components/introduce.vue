@@ -4,7 +4,7 @@
       <img src="../images/portrait.jpg" alt="咦!我图呢???">
     </div>
     <div class="textPart">
-      <span>热爱编程,热爱javascript</span>
+      <span>热爱编程,热爱生活</span>
     </div>
   </div>
 </template>

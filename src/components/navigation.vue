@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <el-row>
-      <el-col :offset="offset" :lg="24" :xl="10">
+      <el-col :offset="offset" :lg="24" :xl="24">
         <el-menu :default-active="activeIndex" class="el-menu-demo" background-color="#9FAAEA" mode="horizontal" @select="handleSelect">
           <el-menu-item index="1" @click="toHome">
             <img src="../images/home.png" alt="咦!我图呢???">
@@ -21,7 +21,7 @@
             <img src="../images/life.png" alt="咦!我图呢???">
             <span slot="title">生活分享</span>
           </el-menu-item>
-          <el-menu-item index="5">
+          <el-menu-item @click="toNote" index="5">
             <img src="../images/comments.png" alt="咦!我图呢???">
             <span slot="title">学习笔记</span>
           </el-menu-item>
@@ -59,10 +59,13 @@ export default {
       },
       toShare() {
         this.$router.push('/share')
+      },
+      toNote() {
+        this.$router.push('/LearnNote')
       }
     },
     mounted(){
-      document.body.clientWidth < 1680 ? this.offset = 0 : this.offset = 7;            
+      document.body.clientWidth < 1680 ? this.offset = 0 : this.offset = 0;            
     }
 
 }

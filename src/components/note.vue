@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>生活分享</h2>
+    <h2>学习笔记</h2>
     <div class="block">
         <el-timeline>
           <el-timeline-item
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'share',
+  name: 'note',
   data() {
     return {
       activities: [{
