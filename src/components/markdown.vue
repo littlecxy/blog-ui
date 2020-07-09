@@ -50,7 +50,7 @@ export default {
             defaultOpen: 'preview',//edit： 默认展示编辑区域 ， preview： 默认展示预览区域 
             editable: false,
             toolbarsFlag: false,
-            scrollStyle: true
+            scrollStyle: false
           }
           return data
         }
@@ -69,6 +69,7 @@ export default {
     margin-left: 28%;
     margin-top: 40px;
     background-color: #ffffff;
+    white-space:normal; word-break:break-all;overflow:hidden;
 }
   .mavonEditor {
     width: 100%;

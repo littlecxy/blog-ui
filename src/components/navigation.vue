@@ -2,17 +2,11 @@
   <div class="container">
     <el-row>
       <el-col :offset="offset" :lg="24" :xl="24">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" background-color="#9FAAEA" mode="horizontal" @select="handleSelect">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
           <el-menu-item index="1" @click="toHome">
             <img src="../images/home.png" alt="咦!我图呢???">
             <span>首页</span>
           </el-menu-item>
-          <!-- <el-submenu index="2">
-            <template slot="title"><img src="../images/learn.png" alt="咦!我图呢???"><span>学习笔记</span></template>
-              <el-menu-item index="2-1">javascript</el-menu-item>
-              <el-menu-item index="2-2">html</el-menu-item>
-              <el-menu-item index="2-3">css</el-menu-item>
-          </el-submenu> -->
           <el-menu-item @click="tofell" index="3">
             <img src="../images/light.png" alt="咦!我图呢???">
             <span slot="title">个人感悟</span>
@@ -49,15 +43,31 @@ export default {
         console.log(key, keyPath);
       },
       about() {
+        window.scrollTo({ 
+            top: 1080, 
+            behavior: "smooth" 
+        });
         this.$router.push('/about')
       },
       toHome() {
+        window.scrollTo({ 
+            top: 1080, 
+            behavior: "smooth" 
+        });
         this.$router.push('/')
       },
       tofell() {
+        window.scrollTo({ 
+            top: 1080, 
+            behavior: "smooth" 
+        });
         this.$router.push('/felling')
       },
       toShare() {
+        window.scrollTo({ 
+            top: 1080, 
+            behavior: "smooth" 
+        });
         this.$router.push('/share')
       },
       toNote() {
@@ -75,7 +85,14 @@ export default {
   .el-menu-demo {
     z-index: 100;
     opacity: 0.75;
-    padding-left: 5%;
+    padding-left: 10%;
+    background-color:transparent;
+  }
+  .el-menu-item {
+    font-size: 1rem;
+  }
+  .el-menu--horizontal > .el-menu-item.is-active {
+    border-bottom: none;
   }
   .el-menu {
     border-bottom: 0px !important;

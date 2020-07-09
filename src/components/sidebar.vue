@@ -5,7 +5,7 @@
     </div>
     <div class="hobby">
       <div class="label">
-
+        
       </div>
       <div class="label">
         
@@ -43,7 +43,7 @@ export default {
       .label {
         width: 54px;
         height: 30px;
-        background-color: rgba(230,244,249,0.8);
+        background-color: rgba(196, 232, 245, 0.8);
         border-radius: 20px;
         float: left;
         margin: 5%;

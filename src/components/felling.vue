@@ -11,7 +11,9 @@
           :color="activity.color"
           :size="activity.size"
           :timestamp="activity.timestamp">
-          {{activity.content}}
+          <div @click="toDetail">
+            {{activity.content}}
+          </div>
           </el-timeline-item>
         </el-timeline>
     </div>
@@ -42,6 +44,11 @@ export default {
         timestamp: '2018-04-03 20:46'
       }]
     };
+  },
+  methods: {
+    toDetail(){
+      this.$router.push({name:'ArticleDetail',query:{name:'haha'}})
+    }
   }
 };
 </script>
