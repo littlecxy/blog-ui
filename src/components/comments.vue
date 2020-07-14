@@ -15,8 +15,6 @@
           </div>
         </el-col>
       </el-row>
-      <!-- <button @click="publish">评论</button>
-      <input type="text" :style="{display: isValid}"> -->
     </div>
 </template>
 <script>
@@ -24,7 +22,7 @@ import {mavonEditor} from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 import articleContentVue from './articleContent.vue';
 export default {
-  name: "Create",
+  name: "comments",
   components: {mavonEditor},
   data(){
     return {
@@ -38,18 +36,18 @@ export default {
     }
   },
   props: {
-    toChild: {
-      type: Object
+    comments: {
+      type: Array
     }
   },
   created(){
-    if(this.toChild != undefined) {
-      let str = JSON.stringify(this.toChild)
+    if(this.comments != undefined) {
+      let str = JSON.stringify(this.comments)
       sessionStorage.setItem('data',str)
     }
     let strData = sessionStorage.getItem('data');
     this.articleContent = JSON.parse(strData)
-    this.context = this.articleContent.content
+    this.context = this.articleContent.length
   },
   computed: {
     prop () {
@@ -64,12 +62,9 @@ export default {
     }
   },
   methods: {
-    save() {
-      this.show ? this.show = false : this.show = true
-    },
-    publish() {
-      let id = this.articleContent.id
-    }
+    // getData() {
+    // this.content = this.toChild
+    // }
   }
 }
 </script>

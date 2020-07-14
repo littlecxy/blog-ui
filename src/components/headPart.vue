@@ -1,7 +1,7 @@
 <template>
   <div>
     <navigation></navigation>
-    <img alt="clannad" src="../images/clannad.png">
+    <!-- <img alt="clannad" src="../images/clannad.png"> -->
       <!-- <music></music> -->
       <h1 class="animate__animated animate__shakeY">
         <svg xmlns="http://www.w3.org/2000/svg">

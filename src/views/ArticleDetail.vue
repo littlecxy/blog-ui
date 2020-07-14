@@ -3,6 +3,7 @@
     <headPart></headPart>
     <div style="position:relative">
       <markdown :toChild="data"></markdown>
+      <comments :comments="comments"></comments>
       <sidebar></sidebar>
     </div>
     <bottomBar></bottomBar>
@@ -14,6 +15,7 @@ import aboutMe from '@/components/aboutMe';
 import sidebar from '@/components/sidebar';
 import bottomBar from '@/components/bottomBar';
 import markdown from '@/components/markdown';
+import comments from '@/components/comments';
   export default {
     name: 'About',
     components: {
@@ -21,11 +23,13 @@ import markdown from '@/components/markdown';
       sidebar,
       bottomBar,
       aboutMe,
-      markdown
+      markdown,
+      comments
     },
     data() {
       return {
-        data: ''
+        data: {},
+        comments: [{portrait:'1.png',name:'zhuyalun',date:'2020-07-10 16:00',comment:'这是一条测试数据'}]
       }
     },
     created(){
@@ -33,8 +37,8 @@ import markdown from '@/components/markdown';
     },
     methods: {
       getData: function(){
-        this.data = this.$route.params.content
-        console.log(this.$route)
+        this.data = this.$route.params.article
+        console.log(this.data)
       }
     }
   }

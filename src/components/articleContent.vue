@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     fullText: function(){
-      this.$router.push({name:'ArticleDetail',params: {content: this.article.content}})
+      this.$router.push({name:'ArticleDetail',params: {article: this.article}})
     }
   }
 }
