@@ -29,7 +29,8 @@
     "@vue/cli-service": "~4.3.0",
     "eslint": "^7.0.0",
     "typescript": "~3.8.3",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0"
   },
   "browserslist": [
     "> 1%",

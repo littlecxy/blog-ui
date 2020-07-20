@@ -4,7 +4,7 @@
       <img src="../images/portrait.jpg" alt="咦!我图呢???">
     </div>
     <div class="textPart">
-      <span>热爱编程,热爱生活</span>
+      <span>生活不易,且行且惜</span>
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 <style lang="scss" scoped>
   .introduce {
     position: absolute;
-    top: 300px;
+    top: 100px;
     left: 44%;
       .portrait {
           img {

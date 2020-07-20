@@ -76,8 +76,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    width: 39%;
-    margin-left: 28%;
+    width: 40%;
+    margin-left: 30%;
     margin-top: 40px;
     background-color: #ffffff;
     white-space:normal; word-break:break-all;overflow:hidden;

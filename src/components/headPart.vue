@@ -1,9 +1,9 @@
 <template>
   <div>
     <navigation></navigation>
-    <!-- <img alt="clannad" src="../images/clannad.png"> -->
+    <img alt="clannad" src="../images/timg (2).jpg">
       <!-- <music></music> -->
-      <h1 class="animate__animated animate__shakeY">
+      <!-- <h1 class="animate__animated animate__shakeY">
         <svg xmlns="http://www.w3.org/2000/svg">
           <text x="0"  y="40"
             style="font-family: Arial;
@@ -14,7 +14,7 @@
                   "
             >Welcome to my blog</text>
         </svg>
-      </h1>
+      </h1> -->
       <introduce></introduce>
   </div>
 </template>
@@ -41,6 +41,8 @@ export default {
 <style lang="scss" scoped>
   img {
     max-width: $max-width;
+    width: 100%;
+    height: 740px;
   }
   .el-row {
     margin-bottom: 20px;
@@ -53,7 +55,7 @@ export default {
   }
   h1 {
     position: absolute;
-    top: 200px;
-    left: 41%;
+    top: 160px;
+    left: 39%;
   }
 </style>
