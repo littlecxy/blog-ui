@@ -18,7 +18,7 @@
       <p>最喜欢的文学作品:三重门</p>
       <p>最喜欢看的动漫:clannad</p>
       <p>最喜欢的游戏:人类一败涂地</p>
-      <p>最喜欢的食物:橘子and甜品</p>
+      <p>最喜欢的食物:橘子and肉松</p>
     </div>
   </div>
 </template>
@@ -43,7 +43,7 @@ export default {
       .label {
         width: 54px;
         height: 30px;
-        background-color: rgba(196, 232, 245, 0.8);
+        background-color: rgba(164, 225, 247, 0.8);
         border-radius: 20px;
         float: left;
         margin: 5%;

@@ -40,32 +40,31 @@ export default {
     },
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
       },
       about() {
         window.scrollTo({ 
-            top: 1080, 
+            top: 380, 
             behavior: "smooth" 
         });
         this.$router.push('/about')
       },
       toHome() {
         window.scrollTo({ 
-            top: 1080, 
+            top: 380, 
             behavior: "smooth" 
         });
         this.$router.push('/')
       },
       tofell() {
         window.scrollTo({ 
-            top: 1080, 
+            top: 380, 
             behavior: "smooth" 
         });
         this.$router.push('/felling')
       },
       toShare() {
         window.scrollTo({ 
-            top: 1080, 
+            top: 380, 
             behavior: "smooth" 
         });
         this.$router.push('/share')
@@ -108,6 +107,7 @@ export default {
       span {
         margin-left: 8px;
         cursor: pointer;
+        font-family: 'STKaiti';
         color: black;
       }
   }

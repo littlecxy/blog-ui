@@ -3,7 +3,10 @@
     <headPart></headPart>
     <div style="position:relative">
       <markdown :toChild="data"></markdown>
-      <comments :comments="comments"></comments>
+      <h3>先占个地</h3>
+      <div v-for="(item,index) in comments" :key="index">
+        <comments :comments="item"></comments>
+      </div>
       <sidebar></sidebar>
     </div>
     <bottomBar></bottomBar>
@@ -29,7 +32,11 @@ import comments from '@/components/comments';
     data() {
       return {
         data: {},
-        comments: [{portrait:'1.png',name:'zhuyalun',date:'2020-07-10 16:00',comment:'这是一条测试数据'}]
+        comments: [
+          {articleId:1,portrait:require('../images/timg (1).jpg'),name:'刘备',date:'2020-07-10 16:00',comment:'我打了一辈子仗了就不能享受享受吗?'},
+          {articleId:2,portrait:require('../images/timg (4).jpg'),name:'诸葛亮',date:'2020-07-10 17:00',comment:'先帝创业未半而中道蹦迪。。。'},
+          {articleId:3,portrait:require('../images/timg.jpg'),name:'陆逊',date:'2020-07-10 18:00',comment:'可曾听闻火烧迪厅七百里'},
+        ]
       }
     },
     created(){
@@ -38,12 +45,13 @@ import comments from '@/components/comments';
     methods: {
       getData: function(){
         this.data = this.$route.params.article
-        console.log(this.data)
       }
     }
   }
 </script>
 
 <style scoped>
-
+    h3 {
+      text-align: center
+    }
 </style>

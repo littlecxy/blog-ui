@@ -45,11 +45,13 @@ export default {
   created(){
     if(this.toChild != undefined) {
       let str = JSON.stringify(this.toChild)
-      sessionStorage.setItem('data',str)
+      sessionStorage.setItem('data1',str)
     }
-    let strData = sessionStorage.getItem('data');
+    let strData = sessionStorage.getItem('data1');
     this.articleContent = JSON.parse(strData)
+    console.log(this.articleContent);
     this.context = this.articleContent.content
+
   },
   computed: {
     prop () {

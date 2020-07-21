@@ -3,18 +3,17 @@
       <el-row>
         <el-col v-if="show" :span="24" :offset="0">
           <div class="content">
-            <mavon-editor
-            class="md"
-            :value="context"
-            :subfield = "prop.subfield"
-            :defaultOpen = "prop.defaultOpen"
-            :toolbarsFlag = "prop.toolbarsFlag"
-            :editable="prop.editable"
-            :scrollStyle="prop.scrollStyle"
-            ></mavon-editor>
+            <img :src="content.portrait" alt="">
+            <div class="comment">
+              <span class="span1">{{ content.name }}</span>
+              <span class="span2">{{ content.date }}</span>
+              <br>
+              {{ content.comment }}
+            </div>
           </div>
         </el-col>
       </el-row>
+      <hr>
     </div>
 </template>
 <script>
@@ -26,28 +25,23 @@ export default {
   components: {mavonEditor},
   data(){
     return {
-      context:'',
-      doc: '',
-      isValid: 'inline',
       show: true,
-      placeholder: '请输入评论...', // 默认提示文本
-      fontSize: '14px', // 编辑区域文字大小
-      articleContent: {}
+      content:{
+        portrait:'',
+        name: '',
+        date: '',
+        comment: '',
+      }
     }
   },
   props: {
     comments: {
-      type: Array
+      type: Object
     }
   },
   created(){
-    if(this.comments != undefined) {
-      let str = JSON.stringify(this.comments)
-      sessionStorage.setItem('data',str)
-    }
-    let strData = sessionStorage.getItem('data');
-    this.articleContent = JSON.parse(strData)
-    this.context = this.articleContent.length
+    console.log('我是评论:'+this.comments)
+    this.content = this.comments
   },
   computed: {
     prop () {
@@ -71,14 +65,31 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    width: 40%;
+    width: 37%;
     margin-left: 30%;
-    margin-top: 40px;
+    // margin-top: 40px;
+    padding: 20px 30px 0 30px;
     background-color: #ffffff;
+    text-align: left;
     white-space:normal; word-break:break-all;overflow:hidden;
+    .content {
+      display: flex;
+      img {
+        width: 44px;
+        height: 44px;
+      }
+      .comment {
+        margin-left: 4%;
+        .span1 {
+          color: rgb(9, 80, 187);
+        }
+        .span2 {
+          margin-left:5px;
+          color: #f77272; 
+          font-size: 0.9rem;
+        }
+      }
+    }
+    
 }
-  .mavonEditor {
-    width: 100%;
-    height: 20px;
-  }
 </style>

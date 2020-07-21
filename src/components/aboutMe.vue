@@ -26,7 +26,7 @@
       </tr>
       <tr>
         <td class="title">喜欢的漫画</td>
-        <td class="explian">海贼王&龙珠</td>
+        <td class="explian">海贼王</td>
       </tr>
       <tr>
         <td class="title graybgd">喜欢的电影</td>
@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <td class="title">喜欢的游戏</td>
-        <td class="explian">云顶之弈&人类一败涂地</td>
+        <td class="explian">云顶之弈</td>
       </tr>
     </table>
     <h2>我的动态</h2>
@@ -62,7 +62,7 @@
       </tr>
       <tr>
         <td class="title">喜欢的漫画</td>
-        <td class="explian">海贼王&龙珠</td>
+        <td class="explian">海贼王</td>
       </tr>
       <tr>
         <td class="title graybgd">喜欢的电影</td>
@@ -70,7 +70,7 @@
       </tr>
       <tr>
         <td class="title">喜欢的游戏</td>
-        <td class="explian">云顶之弈&人类一败涂地</td>
+        <td class="explian">云顶之弈</td>
       </tr>
     </table>
   </div>
