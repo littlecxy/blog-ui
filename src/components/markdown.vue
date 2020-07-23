@@ -43,15 +43,12 @@ export default {
     }
   },
   created(){
-    if(this.toChild != undefined) {
-      let str = JSON.stringify(this.toChild)
-      sessionStorage.setItem('data1',str)
+    if( undefined != this.toChild.content ){
+      console.log('文章详细内容'+this.toChild.content);
+      this.context = this.toChild.content
+      sessionStorage.setItem('artDetail',this.context);
     }
-    let strData = sessionStorage.getItem('data1');
-    this.articleContent = JSON.parse(strData)
-    console.log(this.articleContent);
-    this.context = this.articleContent.content
-
+      this.context = sessionStorage.getItem('artDetail');
   },
   computed: {
     prop () {

@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
+  <div class="container1">
     <navigation></navigation>
-    <img alt="clannad" src="../images/timg (3).jpg">
+    <img alt="clannad" class="headerImg" src="../images/timg (3).jpg">
       <!-- <music></music> -->
-      <h1 class="animate__animated animate__shakeY">
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <text x="0"  y="60"
-            style="font-family: Arial;
-                   font-size  : 31;
-                   stroke     : #000000;
-                   stroke-width: 2;
-                   fill       : #9FAAEA;
-                  "
-            >Welcome to my blog</text>
-        </svg>
-      </h1>
+      <div class="svg">
+        <h1 class="animate__animated animate__shakeY">
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <text x="0"  y="60"
+              style="font-family: Arial;
+                    font-size  : 31;
+                    stroke     : #000000;
+                    stroke-width: 2;
+                    fill       : #9FAAEA;
+                    "
+              >Welcome to my blog</text>
+          </svg>
+        </h1>
+      </div>
       <introduce></introduce>
   </div>
 </template>
@@ -39,6 +41,9 @@ export default {
 
 </script>
 <style lang="scss" scoped>
+  .container1 {
+    position: relative;
+  }
   img {
     max-width: $max-width;
     width: 100%;
@@ -53,9 +58,16 @@ export default {
   .el-col {
     border-radius: 4px;
   }
-  h1 {
+  .svg {
+    // position: absolute;
+    // top: 54%;
+    // left: 50%;
+    // transform: translateY(-50%);
+    // transform: translateX(-50%);
+    width: 70%;
     position: absolute;
-    top: 380px;
-    left: 42%;
+    left: 15%;
+    transform: translateY(-100%);
+    padding: 0 0 9% 0;
   }
 </style>

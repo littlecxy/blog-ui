@@ -4,26 +4,37 @@
       <img src="../images/portrait.jpg" alt="咦!我图呢???">
     </div>
     <div class="textPart">
-      <span>我生待明日,万事成蹉跎</span>
+      <span>长路漫漫,行则将至</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'introduce'
+  name: 'introduce',
+  created() {
+  },
+  mounted() {
+    this.init
+  },
+  methods: {
+    init() {
+      let height = document.getElementsByClassName('headerImg')[0].clientHeight;
+      let ownHeight = document.getElementsByClassName('introduce')[0].clientHeight;
+      let avildHeight = (height - ownHeight) + 'px';
+      document.getElementsByClassName('introduce')[0].style.top = height;
+    }
+  }
 }
 
 </script>
 <style lang="scss" scoped>
   .introduce {
     width: 70%;
-    // background-color: rgba(116, 190, 212, 0.3);
     background-color: rgba(158, 224, 245, 0.35);
     position: absolute; 
-    top: 560px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 15%;
+    transform: translateY(-100%);
     padding: 10px 0 10px 0;
       .portrait {
           img {

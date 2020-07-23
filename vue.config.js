@@ -13,15 +13,28 @@ module.exports = {
                 .end()
         })
     },
-    // cli3 代理是从指定的target后面开始匹配的，不是任意位置；配置pathRewrite可以做替换
-    // devServer: {
-    //     proxy: {
-    //       '/api': {
-    //         target: '',
-    //         changeOrigin: true,
-    //         pathRewrite: { }
-    //       }
-    //     }
-    //   }
+    devServer: {
+        // overlay: { // 让浏览器 overlay 同时显示警告和错误
+        //   warnings: true,
+        //   errors: true
+        // },
+        // open: false, // 是否打开浏览器
+        // host: "localhost",
+        // port: "8080", // 代理断就
+        // https: false,
+        // hotOnly: false, // 热更新
+        proxy: {
+          "/api": {
+            target:
+              "http://localhost:3000", // 目标代理接口地址
+            secure: false,
+            changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
+            // ws: true, // 是否启用websockets
+            pathRewrite: {
+              "^/api": "/"
+            }
+          }
+        }
+      }
     
 }

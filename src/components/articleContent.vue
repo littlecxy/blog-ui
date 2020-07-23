@@ -78,7 +78,7 @@ export default {
   article {
     display: inline-block;
     position: relative;
-    margin-top: 40px;
+    margin-top: 2%;
     width: 40%;
     margin-left: 30%;
     display: flex;
