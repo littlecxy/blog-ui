@@ -1,9 +1,10 @@
 import axios from '../axios'
 // 接口测试
-export function test() {
+export function test(o) {
   return axios({
     url: '/api/user',
-    method: 'get'
+    method: 'post',
+    data: o
   })
 }
 

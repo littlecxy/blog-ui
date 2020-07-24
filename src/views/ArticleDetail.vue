@@ -5,16 +5,16 @@
       <markdown :toChild="data"></markdown>
       <div class="leavemsg">
         <el-button type="text" @click="leaveMessage" icon="el-icon-edit">点我留言</el-button>
-        <el-dialog title="账号注册" :visible.sync="dialogFormVisible" width="24%">
+        <el-dialog title="账号注册" :visible.sync="dialogFormVisible" width="32%">
           <el-form :model="form">
             <el-form-item label="请输入姓名" :label-width="formLabelWidth">
-              <el-input v-model="form.name" autocomplete="off"></el-input>
+              <el-input v-model="form.name" clearable autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="请输入邮箱" :label-width="formLabelWidth">
-              <el-input v-model="form.email" autocomplete="off"></el-input>
+              <el-input v-model="form.email" clearable autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="请输入密码" :label-width="formLabelWidth">
-              <el-input v-model="form.password" autocomplete="off"></el-input>
+              <el-input v-model="form.password" clearable autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="请上传头像" :label-width="formLabelWidth">
             </el-form-item>
@@ -125,9 +125,9 @@ import {test} from '@/http/api/test'
     },
     created(){
       this.getData();
-      test().then(res=>{
-        console.log(res)
-      })
+      // test().then(res=>{
+      //   console.log(res)
+      // })
     },
     methods: {
       getData: function(){
@@ -161,8 +161,8 @@ import {test} from '@/http/api/test'
         if(this.token=='') {
           this.dialogFormVisible = true
         }
-        this.textarea = ''
-        this.show = true
+        this.textarea = '';
+        this.show = true;
       },
       postComment: function() {
         this.show = false;
@@ -191,6 +191,10 @@ import {test} from '@/http/api/test'
         console.log(file);
       },
       registered() {
+
+      //   test().then(res=>{
+      //     console.log(res)
+      // })
         this.dialogFormVisible = false;
         this.$notify({
           title: '提示',
@@ -198,11 +202,15 @@ import {test} from '@/http/api/test'
           type: 'success'
         });
       }
+    },
+    mounted() {
+      if(document.body.clientWidth < 1440)
+        document.getElementsByClassName('el-dialog')[0].style.width = '40%';
     }
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     h3 {
       text-align: center
     }

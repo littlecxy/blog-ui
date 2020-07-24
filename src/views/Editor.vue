@@ -4,6 +4,7 @@
         <el-col v-if="show" :span="24" :offset="0">
           <div class="content">
             <mavon-editor
+            fontSize="10px"
             class="md"
             :value="context"
             :subfield = "prop.subfield"
@@ -11,6 +12,7 @@
             :toolbarsFlag = "prop.toolbarsFlag"
             :editable="prop.editable"
             :scrollStyle="prop.scrollStyle"
+            @save = "save"
             ></mavon-editor>
           </div>
         </el-col>
@@ -22,9 +24,8 @@
 <script>
 import {mavonEditor} from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
-import articleContentVue from './articleContent.vue';
+import {test} from '@/http/api/test'
 export default {
-  name: "Create",
   components: {mavonEditor},
   data(){
     return {
@@ -37,47 +38,54 @@ export default {
       articleContent: {}
     }
   },
-  props: {
-    toChild: {
-      type: Object
-    }
-  },
   created(){
-    if( undefined != this.toChild.content ){
-      console.log('文章详细内容'+this.toChild.content);
-      this.context = this.toChild.content
-      sessionStorage.setItem('artDetail',this.context);
-    }
-      this.context = sessionStorage.getItem('artDetail');
-  },
+    let str =`::: hljs-center
+
+              **CLANNAD观后感**
+
+              :::
+              > 读作cl,译为人生
+
+              ![timg 1.jpg](1)`
+      },
   computed: {
     prop () {
       let data = {
-        subfield: false,// 单双栏模式
-        defaultOpen: 'preview',//edit： 默认展示编辑区域 ， preview： 默认展示预览区域 
-        editable: false,
-        toolbarsFlag: false,
-        scrollStyle: false
+        subfield: true,// 单双栏模式
+        defaultOpen: 'edit',//edit： 默认展示编辑区域 ， preview： 默认展示预览区域 
+        editable: true,
+        toolbarsFlag: true,
+        scrollStyle: true
       }
       return data
     }
   },
   methods: {
-    save() {
-      this.show ? this.show = false : this.show = true
+    save(value,render) {
+      console.log('html格式'+render);
+      const obj = {};
+      obj.value = render.toString();
+      test(obj).then(res=>{
+        console.log(res)
+      })
+      
     },
     publish() {
-      let id = this.articleContent.id
+
     }
+  },
+  mounted() {
+    this.context = sessionStorage.getItem('gg');
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .container {
-    width: 40%;
-    margin-left: 30%;
-    margin-top: 40px;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 20%;
+    transform: translateY(-50%);
     background-color: #ffffff;
     white-space:normal; word-break:break-all;overflow:hidden;
 }

@@ -34,7 +34,7 @@ export default {
     background-color: rgba(158, 224, 245, 0.35);
     position: absolute; 
     left: 15%;
-    transform: translateY(-100%);
+    transform: translateY(-102%);
     padding: 10px 0 10px 0;
       .portrait {
           img {

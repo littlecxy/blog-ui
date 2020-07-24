@@ -6,6 +6,7 @@ import Felling from '../views/Felling.vue'
 import Share from '../views/Share.vue'
 import ArticleDetail from '../views/ArticleDetail.vue'
 import LearnNote from '../views/LearnNote.vue'
+import Editor from '@/views/Editor.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,11 @@ Vue.use(VueRouter)
     name: 'LearnNote',
     component: LearnNote
   },
+  {
+    path: '/Editor',
+    name: 'Editor',
+    component: Editor
+  }
   // {
   //   path: '/about',
   //   name: 'About',

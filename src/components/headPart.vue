@@ -47,7 +47,6 @@ export default {
   img {
     max-width: $max-width;
     width: 100%;
-    // height: 1020px;
   }
   .el-row {
     margin-bottom: 20px;
@@ -59,15 +58,12 @@ export default {
     border-radius: 4px;
   }
   .svg {
-    // position: absolute;
-    // top: 54%;
-    // left: 50%;
-    // transform: translateY(-50%);
-    // transform: translateX(-50%);
-    width: 70%;
+    font-size: 15px;
+    width: 20%;
     position: absolute;
-    left: 15%;
+    left: 40%;
+    // transform: translateX(100%);
     transform: translateY(-100%);
-    padding: 0 0 9% 0;
+    padding: 0 0 10% 0;
   }
 </style>
