@@ -6,9 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import vueAplayer from 'vue-aplayer';
 import 'animate.css';
-import axios from 'axios'
 
-Vue.prototype.$axios=axios
 Vue.use(ElementUI);
 Vue.use(vueAplayer);
 Vue.config.productionTip = false

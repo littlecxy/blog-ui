@@ -14,12 +14,13 @@
               <el-input v-model="form.email" clearable autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="请输入密码" :label-width="formLabelWidth">
-              <el-input v-model="form.password" clearable autocomplete="off"></el-input>
+              <el-input v-model="form.password" clearable autocomplete="off" show-password></el-input>
             </el-form-item>
             <el-form-item label="请上传头像" :label-width="formLabelWidth">
             </el-form-item>
             <el-upload
-              action="#"
+              action="http://localhost:3000/user/uploadfile"
+              ref="upload"
               list-type="picture-card"
               :auto-upload="false">
                 <i slot="default" class="el-icon-plus"></i>
@@ -91,7 +92,9 @@ import sidebar from '@/components/sidebar';
 import bottomBar from '@/components/bottomBar';
 import markdown from '@/components/markdown';
 import comments from '@/components/comments';
-import {test} from '@/http/api/test'
+import {register} from '@/http/api/user';
+import {format} from '@/utils/datetime';
+import {isEmail} from '@/utils/validate'
   export default {
     name: 'About',
     components: {
@@ -125,9 +128,10 @@ import {test} from '@/http/api/test'
     },
     created(){
       this.getData();
-      // test().then(res=>{
-      //   console.log(res)
-      // })
+      this.$store.commit('setUserInfo',sessionStorage.getItem('status'));
+      if(this.$store.state.status == '1') {
+        this.show = true;
+      }
     },
     methods: {
       getData: function(){
@@ -150,6 +154,7 @@ import {test} from '@/http/api/test'
       leaveMessage: function() {
         this.dialogImageUrl = '';
         this.dialogVisible = false;
+        this.form = {};
         document.getElementsByClassName('el-dialog__title')[0].innerText = '账号注册';
         document.getElementsByClassName('el-button--text')[1].firstElementChild.innerText = '已有账号?直接登录';
         setTimeout(function(){
@@ -162,14 +167,13 @@ import {test} from '@/http/api/test'
           this.dialogFormVisible = true
         }
         this.textarea = '';
-        this.show = true;
       },
       postComment: function() {
         this.show = false;
-        this.comments.push({'articleId':1,portrait:require('../images/timg (1).jpg'),name:'游客',date:'2020-07-22 00:00',comment:this.textarea});
+        this.comments.push({'articleId':1,portrait:require('../images/wind.jpg'),name:'游客',date:'2020-07-22 00:00',comment:this.textarea});
          this.$notify({
           title: '成功',
-          message: '您的评论已发表',
+          message: '发表成功',
           type: 'success'
         });
       },
@@ -181,7 +185,11 @@ import {test} from '@/http/api/test'
         document.getElementsByClassName('el-form-item__label')[3].innerText = '';
       },
       handleRemove(file) {
-        console.log(file);
+        let fileList = this.$refs.upload.uploadFiles;
+        let index = fileList.findIndex(fileItem => {
+          return fileItem.uid === file.uid
+        })
+        fileList.splice(index,1)
       },
       handlePictureCardPreview(file) {
         this.dialogImageUrl = file.url;
@@ -191,11 +199,62 @@ import {test} from '@/http/api/test'
         console.log(file);
       },
       registered() {
-
-      //   test().then(res=>{
-      //     console.log(res)
-      // })
+        const obj = [];
+        let form = this.form;
+        if(form.name == undefined) {
+          this.$notify({
+            title: '警告',
+            message: '请输入姓名',
+            type: 'error'
+        });
+        return
+        }
+        if(form.password == undefined) {
+          this.$notify({
+            title: '警告',
+            message: '请输入密码',
+            type: 'error'
+        });
+        return
+        }
+        if(form.email == undefined) {
+          this.$notify({
+            title: '警告',
+            message: '请输入邮箱',
+            type: 'error'
+        });
+        return
+        }
+        if(this.$refs.upload.uploadFiles[0] == undefined) {
+          this.$notify({
+            title: '警告',
+            message: '请选择头像',
+            type: 'error'
+          });
+          return
+        }
+        if(!isEmail(form.email)) {
+          this.$notify({
+            title: '警告',
+            message: '请输入正确的邮箱',
+            type: 'error'
+        });
+        return
+        }
+        console.log('我是zz' + this.$refs.name)
+        this.$refs.upload.submit();
+        obj[0] = form.name;
+        obj[1] = form.password;
+        obj[2] = this.$refs.upload.uploadFiles[0].name;
+        obj[3] = format(new Date());
+        obj[4] = 1;
+        obj[5] = form.email;
+        register(obj).then(res => {
+          console.log(res)
+        })
         this.dialogFormVisible = false;
+        sessionStorage.setItem('status','1');
+        this.show = true;
         this.$notify({
           title: '提示',
           message: '操作成功',
