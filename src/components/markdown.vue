@@ -43,12 +43,14 @@ export default {
     }
   },
   created(){
+    const html2md=require('html-to-md');
     if( undefined != this.toChild.content ){
       console.log('文章详细内容'+this.toChild.content);
-      this.context = this.toChild.content
+      this.context = html2md(this.toChild.content);
+      console.log('我是markdown'+this.context)
       sessionStorage.setItem('artDetail',this.context);
     }
-      this.context = sessionStorage.getItem('artDetail');
+      this.context = html2md(sessionStorage.getItem('artDetail'));
   },
   computed: {
     prop () {

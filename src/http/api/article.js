@@ -8,3 +8,11 @@ export function postArticle(o) {
     data: o
   })
 }
+
+// 获取文章列表
+export function findArticle() {
+  return axios({
+    url: '/api/article/findArticle',
+    method: 'post'
+  })
+}

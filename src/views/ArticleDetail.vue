@@ -152,6 +152,7 @@ import {postComment,findComment} from '@/http/api/comment';
       getData: function(){
         if(this.$route.params.article != undefined){
           this.data = this.$route.params.article;
+          console.log('文章内容'+this.data.content);
           console.log('文章id'+this.data.id);
           sessionStorage.setItem('artId',this.data.id);
         }

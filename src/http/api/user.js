@@ -17,3 +17,15 @@ export function login(o) {
     data: o
   })
 }
+
+// 图片上传
+export function uploadimg(o) {
+  return axios({
+    url: '/api/user/uploadimg',
+    method: 'post',
+    data: o,
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+}

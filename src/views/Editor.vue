@@ -12,8 +12,11 @@
             :toolbarsFlag = "prop.toolbarsFlag"
             :editable="prop.editable"
             :scrollStyle="prop.scrollStyle"
-             @save = "save"
-             @change="changeData"
+            ref=md
+            @save="save"
+            @change="changeData"
+            @imgAdd="imgAdd"
+            @imgDel="imgDel"
             ></mavon-editor>
           </div>
         </el-col>
@@ -26,6 +29,8 @@
 import {mavonEditor} from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 import {postArticle} from '@/http/api/article';
+import {curentTime} from '@/utils/datetime';
+import {uploadimg} from '@/http/api/user'
 export default {
   components: {mavonEditor},
   data(){
@@ -40,8 +45,7 @@ export default {
     }
   },
   created(){
-    const html2md=require('html-to-md');
-    this.context = html2md('<h2><a id="123_0"></a>123</h2>');
+    
   },
   computed: {
     prop () {
@@ -62,15 +66,25 @@ export default {
       obj[0] = 'title';
       obj[1] = render;
       obj[2] = 'markdown';
-      obj[3] = 1;
-      obj[4] = '20200808';
-      obj[5] = 100;
-      obj[6] = 1;
-      obj[7] = '1';
+      obj[3] = curentTime(new Date())
+      obj[4] = 100;
+      obj[5] = 1;
+      obj[6] = '1';
       postArticle(obj).then(res=>{
         console.log(res)
       })
       
+    },
+    imgAdd(pos,file) {
+      console.log(pos);
+      let formdata = new FormData()
+      formdata.append('imgFile', file)
+      uploadimg(formdata).then(res => {
+        that.$refs.md.$img2Url(pos, res.url)
+      })
+    },
+    imgDel() {
+      alert(2)
     },
     changeData() {
 

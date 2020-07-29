@@ -33,6 +33,7 @@
 </template>
   
 <script>
+import {GetChinese} from "@/utils/util";
 export default {
   name: 'articleContent',
   data(){
@@ -46,6 +47,8 @@ export default {
         totalNum: '',
         readTime: '',
         ContentAbstract: '',
+        context: '',
+        content: ''
       }
     }
   },
@@ -55,8 +58,19 @@ export default {
     }
   },
   created(){
-    this.article = this.toChild
-    this.article.readTime = parseInt(this.toChild.totalNum/100)
+    const html2md=require('html-to-md');
+    let data = this.toChild;
+    this.article.id = data.id;
+    this.article.year = data.date.substring(5,7);
+    this.article.month = data.date.substring(8,10);
+    this.article.date = data.date;
+    this.article.totalNum = GetChinese(data.content).length;
+    this.article.readTime = parseInt(GetChinese(data.content).length/100);
+    this.article.title = data.content.substring(data.content.indexOf('<center>')+8,data.content.indexOf('</center>'));
+    this.article.content = data.content;
+    let ContentAbstract = GetChinese(data.content);
+    let rest = ContentAbstract.replace(this.article.content,'');
+    this.article.ContentAbstract = rest.substring(0,15)+'......';
   },
   computed: {
     // calculateTime(){
