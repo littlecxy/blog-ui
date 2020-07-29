@@ -8,3 +8,12 @@ export function register(o) {
     data: o
   })
 }
+
+// 登录
+export function login(o) {
+  return axios({
+    url: '/api/user/login',
+    method: 'post',
+    data: o
+  })
+}

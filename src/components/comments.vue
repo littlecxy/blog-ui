@@ -3,12 +3,12 @@
       <el-row>
         <el-col v-if="show" :span="24" :offset="0">
           <div class="content">
-            <img :src="content.portrait" alt="">
+            <img :src="content.avator" alt="">
             <div class="comment">
               <span class="span1">{{ content.name }}</span>
               <span class="span2">{{ content.date }}</span>
               <br>
-              {{ content.comment }}
+              {{ content.content }}
             </div>
           </div>
         </el-col>
@@ -27,10 +27,10 @@ export default {
     return {
       show: true,
       content:{
-        portrait:'',
+        avator:'',
         name: '',
         date: '',
-        comment: '',
+        content: '',
       }
     }
   },

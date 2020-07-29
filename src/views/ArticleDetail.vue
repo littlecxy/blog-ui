@@ -58,9 +58,23 @@
             </el-dialog>
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button type="text" @click="login">已有账号?直接登录</el-button>
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
+            <el-button type="text" @click="toLogin">已有账号?直接登录</el-button>
+            <el-button @click="cancleRegistered">取 消</el-button>
             <el-button type="primary" @click="registered">确 定</el-button>
+          </div>
+        </el-dialog>
+        <el-dialog title="账号登录" :visible.sync="dialogFormVisible1" width="32%">
+          <el-form :model="form">
+            <el-form-item label="请输入邮箱" :label-width="formLabelWidth">
+              <el-input v-model="form.email" clearable autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="请输入密码" :label-width="formLabelWidth">
+              <el-input v-model="form.password" clearable autocomplete="off" show-password></el-input>
+            </el-form-item>
+          </el-form>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible1 = false">取 消</el-button>
+            <el-button type="primary" @click="login">确 定</el-button>
           </div>
         </el-dialog>
       </div>
@@ -77,7 +91,6 @@
           show-word-limit
         >
       </el-input>
-
       <el-button type="primary"  icon="el-icon-s-promotion" @click="postComment">提交</el-button>
       </div>
       <sidebar></sidebar>
@@ -92,9 +105,10 @@ import sidebar from '@/components/sidebar';
 import bottomBar from '@/components/bottomBar';
 import markdown from '@/components/markdown';
 import comments from '@/components/comments';
-import {register} from '@/http/api/user';
-import {format} from '@/utils/datetime';
-import {isEmail} from '@/utils/validate'
+import {register,login} from '@/http/api/user';
+import {format,curentTime} from '@/utils/datetime';
+import {isEmail} from '@/utils/validate';
+import {postComment,findComment} from '@/http/api/comment';
   export default {
     name: 'About',
     components: {
@@ -114,6 +128,7 @@ import {isEmail} from '@/utils/validate'
         input: '',
         token: '',
         dialogFormVisible: false,
+        dialogFormVisible1: false,
         form: {
           name: '',
           email: '', 
@@ -140,49 +155,107 @@ import {isEmail} from '@/utils/validate'
           console.log('文章id'+this.data.id);
           sessionStorage.setItem('artId',this.data.id);
         }
-        const arr = [
-          {articleId:1,portrait:require('../images/timg (1).jpg'),name:'刘备',date:'2020-07-10 16:00',comment:'我打了一辈子仗了就不能享受享受吗?'},
-          {articleId:1,portrait:require('../images/timg (4).jpg'),name:'诸葛亮',date:'2020-07-10 17:00',comment:'先帝创业未半而中道蹦迪。。。'},
-          {articleId:1,portrait:require('../images/timg.jpg'),name:'陆逊',date:'2020-07-10 18:00',comment:'可曾听闻陆逊火烧迪厅七百里'},
-        ]
-        let artId = sessionStorage.getItem('artId');
-        this.comments = arr.filter(function(currentValue,index,array){
-          return currentValue.articleId == artId
+        let objArray = [];
+        objArray[0] = sessionStorage.getItem('artId');
+        findComment(objArray).then(res => {
+          console.log(res);
+          for (let item of res) {
+            item.avator = require(`../images/${item.avator}`)
+          }
+          this.comments = res;
         })
-        console.log('过滤后的数组'+this.comments)
+        let artId = sessionStorage.getItem('artId');
       },
       leaveMessage: function() {
         this.dialogImageUrl = '';
         this.dialogVisible = false;
         this.form = {};
-        document.getElementsByClassName('el-dialog__title')[0].innerText = '账号注册';
-        document.getElementsByClassName('el-button--text')[1].firstElementChild.innerText = '已有账号?直接登录';
-        setTimeout(function(){
-          document.getElementsByClassName('el-form-item')[0].style.display = 'block'
-          document.getElementsByClassName('el-form-item')[3].style.display = 'block';
-          document.getElementsByClassName('el-form-item__label')[3].innerText = '请选择头像';
-          document.getElementsByClassName('el-form-item')[3].nextElementSibling.style.display = 'block';
-        },100)
+        
         if(this.token=='') {
           this.dialogFormVisible = true
         }
         this.textarea = '';
       },
       postComment: function() {
-        this.show = false;
-        this.comments.push({'articleId':1,portrait:require('../images/wind.jpg'),name:'游客',date:'2020-07-22 00:00',comment:this.textarea});
+        // this.show = false;
+        let strObj = sessionStorage.getItem('currentUser');
+        let userObj = JSON.parse(strObj);
+        let currentDate = curentTime();
+        this.comments.push({'articleId':this.data.id,avator:require(`../images/${userObj[0].avator}`),name:userObj[0].name,date:currentDate,content:this.textarea});
          this.$notify({
           title: '成功',
           message: '发表成功',
           type: 'success'
         });
+        let commentObj = [];
+        commentObj[0] = 0;
+        commentObj[1] = this.textarea;
+        commentObj[2] = currentDate;
+        commentObj[3] = 1;
+        commentObj[4] = sessionStorage.getItem('artId');
+        commentObj[5] = userObj[0].id;
+        commentObj[6] = '111';
+        postComment(commentObj).then(res => {
+          console.log(res);
+        })
+        this.textarea = '';
       },
+      toLogin() {
+        this.dialogFormVisible = false;
+        this.dialogFormVisible1 = true;
+      },
+      // 登录按钮
       login() {
-        document.getElementsByClassName('el-dialog__title')[0].innerText = '账号登录';
-        document.getElementsByClassName('el-button--text')[1].firstElementChild.innerText = '';
-        document.getElementsByClassName('el-form-item')[0].style.display = 'none';
-        document.getElementsByClassName('el-form-item')[3].nextElementSibling.style.display = 'none';
-        document.getElementsByClassName('el-form-item__label')[3].innerText = '';
+        let form = this.form;
+        if(form.email == undefined) {
+          this.$notify({
+            title: '警告',
+            message: '请输入邮箱',
+            type: 'error'
+        });
+        return
+        }
+        if(form.password == undefined) {
+          this.$notify({
+            title: '警告',
+            message: '请输入密码',
+            type: 'error'
+        });
+        return
+        };
+        if(!isEmail(form.email)) {
+          this.$notify({
+            title: '警告',
+            message: '请输入正确的邮箱',
+            type: 'error'
+        });
+        return
+        };
+        let obj = [];
+        obj[0] = form.email;
+        obj[1] = form.password;
+        login(obj).then(res => {
+          console.log('我是登录用户啊啊啊啊啊啊啊'+ res);
+          if(res.length == 0) {
+              this.$notify({
+              title: '失败',
+              message: '用户名或密码错误',
+              type: 'error'
+            });
+            return
+          }
+          console.table(res);
+          let strArray = JSON.stringify(res);
+          sessionStorage.setItem('currentUser',strArray);
+          this.dialogFormVisible1 = false;
+          sessionStorage.setItem('status','1');
+          this.$notify({
+            title: '成功',
+            message: '登录成功',
+            type: 'success'
+           });
+        this.show = true;
+        })
       },
       handleRemove(file) {
         let fileList = this.$refs.upload.uploadFiles;
@@ -253,13 +326,14 @@ import {isEmail} from '@/utils/validate'
           console.log(res)
         })
         this.dialogFormVisible = false;
-        sessionStorage.setItem('status','1');
-        this.show = true;
         this.$notify({
           title: '提示',
-          message: '操作成功',
+          message: '注册成功',
           type: 'success'
         });
+      },
+      cancleRegistered() {
+        this.dialogFormVisible = false;
       }
     },
     mounted() {

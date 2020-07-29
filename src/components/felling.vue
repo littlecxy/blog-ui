@@ -2,20 +2,14 @@
   <div class="container">
     <h2>个人感悟</h2>
     <div class="block">
-        <el-timeline>
-          <el-timeline-item
-          v-for="(activity, index) in activities"
-          :key="index"
-          :icon="activity.icon"
-          :type="activity.type"
-          :color="activity.color"
-          :size="activity.size"
-          :timestamp="activity.timestamp">
-          <div @click="toDetail">
-            {{activity.content}}
-          </div>
-          </el-timeline-item>
-        </el-timeline>
+      <el-timeline>
+        <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp" type="success" placement="top">
+          <el-card>
+            <h4>{{ activity.title }}</h4>
+            <p>{{ activity.content }}</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
     </div>
   </div>
 </template>
@@ -26,22 +20,17 @@ export default {
   data() {
     return {
       activities: [{
-        content: '暂时没有感悟',
+        content: '2020冲冲冲',
         timestamp: '2018-04-12 20:46',
-        size: 'large',
-        type: 'primary',
-        icon: 'el-icon-more'
+        title: '你好,2020'
       }, {
-        content: '暂时没有感悟',
-        timestamp: '2018-04-03 20:46',
-        color: '#0bbd87'
+        content: '2021冲冲冲',
+        timestamp: '2018-04-12 20:46',
+        title: '你好,2021'
       }, {
-        content: '暂时没有感悟',
-        timestamp: '2018-04-03 20:46',
-        size: 'large'
-      }, {
-        content: '暂时没有感悟',
-        timestamp: '2018-04-03 20:46'
+        content: '2022冲冲冲',
+        timestamp: '2018-04-12 20:46',
+        title: '你好,2022'
       }]
     };
   },
@@ -53,15 +42,18 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-    .container {
-        padding: 15px 20px;
-        width: 38%;
-        margin-left: 29%;
-        margin-top: 40px;
-        background-color: #ffffff;
-          .block {
-            margin-top: 10%;
-            width: 50%;
-          }
-    }
+  .container {
+    padding: 15px 20px;
+    width: 38%;
+    margin-left: 29%;
+    margin-top: 40px;
+    background-color: #ffffff;
+      .block {
+        margin-top: 10%;
+        width: 91%;
+      }
+  }
+  .el-card {
+    background-color: rgb(178, 238, 217);
+  }
 </style>

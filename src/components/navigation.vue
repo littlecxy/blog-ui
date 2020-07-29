@@ -70,6 +70,10 @@ export default {
         this.$router.push('/share')
       },
       toNote() {
+        window.scrollTo({ 
+            top: 380, 
+            behavior: "smooth" 
+        });
         this.$router.push('/LearnNote')
       }
     },

@@ -12,7 +12,8 @@
             :toolbarsFlag = "prop.toolbarsFlag"
             :editable="prop.editable"
             :scrollStyle="prop.scrollStyle"
-            @save = "save"
+             @save = "save"
+             @change="changeData"
             ></mavon-editor>
           </div>
         </el-col>
@@ -24,7 +25,7 @@
 <script>
 import {mavonEditor} from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
-import {test} from '@/http/api/test'
+import {postArticle} from '@/http/api/article';
 export default {
   components: {mavonEditor},
   data(){
@@ -39,15 +40,9 @@ export default {
     }
   },
   created(){
-    let str =`::: hljs-center
-
-              **CLANNAD观后感**
-
-              :::
-              > 读作cl,译为人生
-
-              ![timg 1.jpg](1)`
-      },
+    const html2md=require('html-to-md');
+    this.context = html2md('<h2><a id="123_0"></a>123</h2>');
+  },
   computed: {
     prop () {
       let data = {
@@ -63,19 +58,29 @@ export default {
   methods: {
     save(value,render) {
       console.log('html格式'+render);
-      const obj = {};
-      obj.value = render.toString();
-      test(obj).then(res=>{
+      const obj = [];
+      obj[0] = 'title';
+      obj[1] = render;
+      obj[2] = 'markdown';
+      obj[3] = 1;
+      obj[4] = '20200808';
+      obj[5] = 100;
+      obj[6] = 1;
+      obj[7] = '1';
+      postArticle(obj).then(res=>{
         console.log(res)
       })
       
+    },
+    changeData() {
+
     },
     publish() {
 
     }
   },
   mounted() {
-    this.context = sessionStorage.getItem('gg');
+
   }
 }
 </script>
