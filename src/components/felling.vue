@@ -4,10 +4,12 @@
     <div class="block">
       <el-timeline>
         <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp" type="success" placement="top">
-          <el-card>
-            <h4>{{ activity.title }}</h4>
-            <p>{{ activity.content }}</p>
-          </el-card>
+          <div @click="toDetail">
+            <el-card>
+              <h4>{{ activity.title }}</h4>
+              <p>{{ activity.content }}</p>
+            </el-card>
+          </div>  
         </el-timeline-item>
       </el-timeline>
     </div>
@@ -36,7 +38,10 @@ export default {
   },
   methods: {
     toDetail(){
-      this.$router.push({name:'ArticleDetail',query:{name:'haha'}})
+      this.$message({
+          message: '本模块正在开发中',
+          type: 'success'
+        });
     }
   }
 };

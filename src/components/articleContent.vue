@@ -63,7 +63,7 @@ export default {
     this.article.id = data.id;
     this.article.year = data.date.substring(5,7);
     this.article.month = data.date.substring(8,10);
-    this.article.date = data.date;
+    this.article.date = data.date.substring(0,10);
     this.article.totalNum = GetChinese(data.content).length;
     this.article.readTime = parseInt(GetChinese(data.content).length/100);
     this.article.title = data.content.substring(data.content.indexOf('<center>')+8,data.content.indexOf('</center>'));
@@ -109,7 +109,8 @@ export default {
         width: 70px;
         height: 70px;
         border-radius: 50%;
-        background-color: #97dffd;
+        // background-color: #97dffd;
+        background-color: #5ecbfa;  
         color: white;
         box-shadow:2px 2px 10px #d4d3d3;
           .year {

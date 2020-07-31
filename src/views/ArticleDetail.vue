@@ -210,7 +210,7 @@ import {postComment,findComment} from '@/http/api/comment';
         let form = this.form;
         if(form.email == undefined) {
           this.$notify({
-            title: '警告',
+            title: '提示',
             message: '请输入邮箱',
             type: 'error'
         });
@@ -218,7 +218,7 @@ import {postComment,findComment} from '@/http/api/comment';
         }
         if(form.password == undefined) {
           this.$notify({
-            title: '警告',
+            title: '提示',
             message: '请输入密码',
             type: 'error'
         });
@@ -226,7 +226,7 @@ import {postComment,findComment} from '@/http/api/comment';
         };
         if(!isEmail(form.email)) {
           this.$notify({
-            title: '警告',
+            title: '提示',
             message: '请输入正确的邮箱',
             type: 'error'
         });
@@ -239,7 +239,7 @@ import {postComment,findComment} from '@/http/api/comment';
           console.log('我是登录用户啊啊啊啊啊啊啊'+ res);
           if(res.length == 0) {
               this.$notify({
-              title: '失败',
+              title: '登录失败',
               message: '用户名或密码错误',
               type: 'error'
             });
@@ -277,31 +277,31 @@ import {postComment,findComment} from '@/http/api/comment';
         let form = this.form;
         if(form.name == undefined) {
           this.$notify({
-            title: '警告',
+            title: '提示',
             message: '请输入姓名',
-            type: 'error'
-        });
-        return
-        }
-        if(form.password == undefined) {
-          this.$notify({
-            title: '警告',
-            message: '请输入密码',
             type: 'error'
         });
         return
         }
         if(form.email == undefined) {
           this.$notify({
-            title: '警告',
+            title: '提示',
             message: '请输入邮箱',
+            type: 'error'
+        });
+        return
+        }
+        if(form.password == undefined) {
+          this.$notify({
+            title: '提示',
+            message: '请输入密码',
             type: 'error'
         });
         return
         }
         if(this.$refs.upload.uploadFiles[0] == undefined) {
           this.$notify({
-            title: '警告',
+            title: '提示',
             message: '请选择头像',
             type: 'error'
           });
@@ -309,13 +309,12 @@ import {postComment,findComment} from '@/http/api/comment';
         }
         if(!isEmail(form.email)) {
           this.$notify({
-            title: '警告',
+            title: '提示',
             message: '请输入正确的邮箱',
             type: 'error'
         });
         return
         }
-        console.log('我是zz' + this.$refs.name)
         this.$refs.upload.submit();
         obj[0] = form.name;
         obj[1] = form.password;
@@ -327,11 +326,11 @@ import {postComment,findComment} from '@/http/api/comment';
           console.log(res)
         })
         this.dialogFormVisible = false;
-        this.$notify({
-          title: '提示',
-          message: '注册成功',
+        this.$message({
+          message: '注册成功,请确认登录',
           type: 'success'
         });
+        this.toLogin();
       },
       cancleRegistered() {
         this.dialogFormVisible = false;

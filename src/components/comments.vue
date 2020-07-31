@@ -75,8 +75,8 @@ export default {
     .content {
       display: flex;
       img {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
       }
       .comment {
         margin-left: 4%;

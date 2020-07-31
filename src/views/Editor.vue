@@ -77,10 +77,10 @@ export default {
     },
     imgAdd(pos,file) {
       console.log(pos);
-      let formdata = new FormData()
-      formdata.append('imgFile', file)
+      let formdata = new FormData();
+      formdata.append('file', file);
       uploadimg(formdata).then(res => {
-        that.$refs.md.$img2Url(pos, res.url)
+        $vm.$img2Url(pos, url);
       })
     },
     imgDel() {

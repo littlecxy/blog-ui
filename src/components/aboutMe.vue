@@ -10,7 +10,7 @@
       </tr>
       <tr>
         <td class="title">生日</td>
-        <td class="explian">1997/09/12</td>
+        <td class="explian">1997/05/07</td>
       </tr>
       <tr>
         <td class="title graybgd">工作</td>
@@ -18,15 +18,15 @@
       </tr>
       <tr>
         <td class="title">特长</td>
-        <td class="explian">what?什么是特长?</td>
+        <td class="explian">什么是特长?</td>
       </tr>
       <tr>
         <td class="title graybgd">喜欢的颜色</td>
-        <td class="explian graybgd">绿色&天空蓝</td>
+        <td class="explian graybgd">绿色And天空蓝</td>
       </tr>
       <tr>
         <td class="title">喜欢的漫画</td>
-        <td class="explian">海贼王</td>
+        <td class="explian">龙珠&海贼王</td>
       </tr>
       <tr>
         <td class="title graybgd">喜欢的电影</td>
@@ -46,7 +46,7 @@
       </tr>
       <tr>
         <td class="title">生日</td>
-        <td class="explian">1997/09/12</td>
+        <td class="explian">1997/05/07</td>
       </tr>
       <tr>
         <td class="title graybgd">工作</td>
@@ -54,15 +54,15 @@
       </tr>
       <tr>
         <td class="title">特长</td>
-        <td class="explian">what?什么是特长?</td>
+        <td class="explian">什么是特长?</td>
       </tr>
       <tr>
         <td class="title graybgd">喜欢的颜色</td>
-        <td class="explian graybgd">绿色&天空蓝</td>
+        <td class="explian graybgd">绿色And天空蓝</td>
       </tr>
       <tr>
         <td class="title">喜欢的漫画</td>
-        <td class="explian">海贼王</td>
+        <td class="explian">龙珠&海贼王</td>
       </tr>
       <tr>
         <td class="title graybgd">喜欢的电影</td>
