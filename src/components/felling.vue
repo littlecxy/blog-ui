@@ -3,11 +3,11 @@
     <h2>个人感悟</h2>
     <div class="block">
       <el-timeline>
-        <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp" type="success" placement="top">
-          <div @click="toDetail">
+        <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.date" type="success" placement="top">
+          <div @click="toDetail(activity)">
             <el-card>
               <h4>{{ activity.title }}</h4>
-              <p>{{ activity.content }}</p>
+              <p>{{ activity.reserved }}</p>
             </el-card>
           </div>  
         </el-timeline-item>
@@ -17,31 +17,25 @@
 </template>
 
 <script>
+import {findArticleByType} from '@/http/api/article';
 export default {
   name: 'felling',
   data() {
     return {
-      activities: [{
-        content: '2020冲冲冲',
-        timestamp: '2018-04-12 20:46',
-        title: '你好,2020'
-      }, {
-        content: '2021冲冲冲',
-        timestamp: '2018-04-12 20:46',
-        title: '你好,2021'
-      }, {
-        content: '2022冲冲冲',
-        timestamp: '2018-04-12 20:46',
-        title: '你好,2022'
-      }]
-    };
+      activities: []
+    }
+  },
+  created() {
+    let type = [];
+    type[0] = 1;
+    findArticleByType(type).then(res => {
+    console.log(res);
+    this.activities = res;
+    })
   },
   methods: {
-    toDetail(){
-      this.$message({
-          message: '本模块正在开发中',
-          type: 'success'
-        });
+    toDetail(activity){
+      this.$router.push({name:'ArticleDetail',params: {article: activity}})
     }
   }
 };
@@ -55,7 +49,7 @@ export default {
     background-color: #ffffff;
       .block {
         margin-top: 10%;
-        width: 91%;
+        width: 86%;
       }
   }
   .el-card {

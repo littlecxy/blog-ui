@@ -62,14 +62,24 @@ export default {
   methods: {
     save(value,render) {
       console.log('html格式'+render);
+      let num = value.indexOf('<type>');
+      let type = value.substring(num+6,num+10);
+      let title = value.substring(value.indexOf('<center>')+8,value.indexOf('</center>'));
+      let reserved = value.substring(value.indexOf('<reserved>')+10,value.indexOf('</reserved>'));
+      let atype;
+      if(type == '个人感悟') atype = 1
+      if(type == '生活分享') atype = 2
+      if(type == '学习笔记') atype = 3
+      alert(type);
+      alert(title);
       const obj = [];
-      obj[0] = 'title';
+      obj[0] = title;
       obj[1] = render;
       obj[2] = 'markdown';
       obj[3] = curentTime(new Date())
       obj[4] = 100;
-      obj[5] = 1;
-      obj[6] = '1';
+      obj[5] = atype;
+      obj[6] = reserved;
       postArticle(obj).then(res=>{
         console.log(res)
       })
@@ -80,7 +90,7 @@ export default {
       let formdata = new FormData();
       formdata.append('file', file);
       uploadimg(formdata).then(res => {
-        $vm.$img2Url(pos, url);
+        // $vm.$img2Url(pos, url);
       })
     },
     imgDel() {
@@ -103,6 +113,7 @@ export default {
 .container {
     width: 60%;
     margin-left: 20%;
+    height: 500px;
     margin-top: 20%;
     transform: translateY(-50%);
     background-color: #ffffff;

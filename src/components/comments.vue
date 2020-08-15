@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <el-row>
-        <el-col v-if="show" :span="24" :offset="0">
+        <el-col v-if="show">
           <div class="content">
             <img :src="content.avator" alt="">
             <div class="comment">
@@ -65,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    width: 37%;
+    width: 35.4%;
     margin-left: 30%;
     // margin-top: 40px;
     padding: 20px 30px 0 30px;

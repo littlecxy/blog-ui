@@ -7,7 +7,7 @@ import Share from '../views/Share.vue'
 import ArticleDetail from '../views/ArticleDetail.vue'
 import LearnNote from '../views/LearnNote.vue'
 import Editor from '@/views/Editor.vue'
-
+import Upload from '@/views/Upload.vue'
 Vue.use(VueRouter)
 
   const routes: Array<RouteConfig> = [
@@ -22,7 +22,7 @@ Vue.use(VueRouter)
     component: About
   },
   {
-    path: '/felling',
+    path: '/Felling',
     name: 'Felling',
     component: Felling
   },
@@ -45,6 +45,11 @@ Vue.use(VueRouter)
     path: '/Editor',
     name: 'Editor',
     component: Editor
+  },
+  {
+    path: '/Upload',
+    name: 'Upload',
+    component: Upload
   }
   // {
   //   path: '/about',

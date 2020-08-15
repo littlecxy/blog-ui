@@ -19,7 +19,7 @@
             <el-form-item label="请上传头像" :label-width="formLabelWidth">
             </el-form-item>
             <el-upload
-              action="http://localhost:3000/user/uploadfile"
+              action="http://192.144.171.231:3000/user/uploadfile"
               ref="upload"
               list-type="picture-card"
               :auto-upload="false">
@@ -161,7 +161,7 @@ import {postComment,findComment} from '@/http/api/comment';
         findComment(objArray).then(res => {
           console.log(res);
           for (let item of res) {
-            item.avator = require(`../images/${item.avator}`)
+            item.avator = `http://192.144.171.231:3000/${item.avator}`
           }
           this.comments = res;
         })
@@ -182,7 +182,8 @@ import {postComment,findComment} from '@/http/api/comment';
         let strObj = sessionStorage.getItem('currentUser');
         let userObj = JSON.parse(strObj);
         let currentDate = curentTime();
-        this.comments.push({'articleId':this.data.id,avator:require(`../images/${userObj[0].avator}`),name:userObj[0].name,date:currentDate,content:this.textarea});
+        let avatorName = sessionStorage.getItem('avatorName');
+        this.comments.push({'articleId':this.data.id,avator:`http://192.144.171.231:3000/${avatorName}`,name:userObj[0].name,date:currentDate,content:this.textarea});
          this.$notify({
           title: '成功',
           message: '发表成功',
@@ -316,6 +317,7 @@ import {postComment,findComment} from '@/http/api/comment';
         return
         }
         this.$refs.upload.submit();
+        sessionStorage.setItem('avatorName',this.$refs.upload.uploadFiles[0].name);
         obj[0] = form.name;
         obj[1] = form.password;
         obj[2] = this.$refs.upload.uploadFiles[0].name;

@@ -3,7 +3,8 @@ import axios from '../axios'
 // 发表评论
 export function postComment(o) {
   return axios({
-    url: '/api/comment/postComment',
+    // url: '/api/comment/postComment',
+    url: '/comment/postComment',
     method: 'post',
     data: o
   })
@@ -12,7 +13,8 @@ export function postComment(o) {
 // 查询评论
 export function findComment(o) {
   return axios({
-    url: '/api/comment/findComment',
+    // url: '/api/comment/findComment',
+    url: '/comment/findComment',
     method: 'post',
     data: o
   })

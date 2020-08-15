@@ -1,7 +1,7 @@
 export default {
   method: 'get',
   // 基础url前缀
-  baseUrl: '/api',
+  baseUrl: 'http://192.144.171.231/api/',
   // 请求头信息
   headers: {
     'Content-Type': 'application/json;charset=UTF-8'

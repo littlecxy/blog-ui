@@ -60,7 +60,7 @@ export default {
             top: 380, 
             behavior: "smooth" 
         });
-        this.$router.push('/felling')
+        this.$router.push('/Felling')
       },
       toShare() {
         window.scrollTo({ 

@@ -2,7 +2,9 @@
   <div>
       <headPart></headPart>
       <div style="position:relative">
+        <!-- <div v-for="(item,index) in articleContentList" :key="index"> -->
         <felling></felling>
+        <!-- </div> -->
         <sidebar></sidebar>
       </div>
       <bottomBar></bottomBar>
@@ -20,7 +22,11 @@ export default {
         sidebar,
         headPart,
         bottomBar
-    }
+    },
+    data() {
+      return {
+      }
+    },
 }
 
 </script>

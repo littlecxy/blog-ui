@@ -4,7 +4,7 @@ import config from './config';
 const instance = axios.create({
   // baseURL: config.baseUrl,
   headers: config.headers,
-  timeout: config.timeout,
+  // timeout: config.timeout,
   withCredentials: config.withCredentials
 })
 

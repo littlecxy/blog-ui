@@ -66,11 +66,9 @@ export default {
     this.article.date = data.date.substring(0,10);
     this.article.totalNum = GetChinese(data.content).length;
     this.article.readTime = parseInt(GetChinese(data.content).length/100);
-    this.article.title = data.content.substring(data.content.indexOf('<center>')+8,data.content.indexOf('</center>'));
+    this.article.title = data.title;
     this.article.content = data.content;
-    let ContentAbstract = GetChinese(data.content);
-    let rest = ContentAbstract.replace(this.article.content,'');
-    this.article.ContentAbstract = rest.substring(0,15)+'......';
+    this.article.ContentAbstract = data.reserved;
   },
   computed: {
     // calculateTime(){
